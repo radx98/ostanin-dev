@@ -32,15 +32,15 @@ export const PROJECTS: Project[] = [
     name: 'Branching Trail',
     description:
       'Graph-based brainstorming tool for exploring creative ideas',
-    link: '/',
-    video:  '/',
+    link: 'https://bt.ostanin.dev/',
+    video:  '/bt_cover.mp4',
     id: 'project1',
   },
   {
     name: 'BoarDash',
     description: 'Enemy logic and behaviour for a one-week video game project',
-    link: '/',
-    video: '/',
+    link: 'https://ostaninth.substack.com/p/boardash',
+    video: '/bd_cover.mp4',
     id: 'project2',
   },
 ]
