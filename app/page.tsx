@@ -52,24 +52,27 @@ function ProjectVideo({ src }: ProjectVideoProps) {
         duration: 0.3,
       }}
     >
-      <MorphingDialogTrigger>
+      <MorphingDialogTrigger className="group relative aspect-video w-full cursor-zoom-in overflow-hidden rounded-xl">
         <video
           src={src}
           autoPlay
           loop
           muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
+          className="block h-full w-full object-cover"
         />
+        <div className="pointer-events-none absolute inset-0 bg-black/10 opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-0 dark:bg-white/10" aria-hidden="true" />
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
-            src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-          />
+        <MorphingDialogContent className="relative w-auto max-w-[min(90vw,64rem)] max-h-[90vh] rounded-2xl bg-zinc-50 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50 md:p-1">
+          <div className="overflow-hidden rounded-xl">
+            <video
+              src={src}
+              autoPlay
+              loop
+              muted
+              className="block h-auto max-h-[80vh] w-full"
+            />
+          </div>
         </MorphingDialogContent>
         <MorphingDialogClose
           className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
@@ -101,6 +104,8 @@ function MagneticSocialLink({
       <a
         href={link}
         className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {children}
         <svg
@@ -151,7 +156,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
+        <h3 className="mb-5 text-lg font-medium">🛠️ Projects</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
@@ -218,7 +223,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
+        <h3 className="mb-3 text-lg font-medium">📝 Posts</h3>
         <div className="flex flex-col space-y-0">
           <AnimatedBackground
             enableHover
@@ -230,11 +235,13 @@ export default function Personal() {
             }}
           >
             {BLOG_POSTS.map((post) => (
-              <Link
+              <a
                 key={post.uid}
                 className="-mx-3 rounded-xl px-3 py-3"
                 href={post.link}
                 data-id={post.uid}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className="flex flex-col space-y-1">
                   <h4 className="font-normal dark:text-zinc-100">
@@ -244,7 +251,7 @@ export default function Personal() {
                     {post.description}
                   </p>
                 </div>
-              </Link>
+              </a>
             ))}
           </AnimatedBackground>
         </div>
@@ -254,7 +261,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
+        <h3 className="mb-5 text-lg font-medium">💬 Contact</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           {/* Feel free to contact me at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
