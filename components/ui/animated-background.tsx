@@ -53,7 +53,7 @@ export function AnimatedBackground({
 
   const childArray = Children.toArray(children) as AnimatedBackgroundChild[]
 
-  return childArray.map((child, index) => {
+  return childArray.map((child) => {
     const id = child.props['data-id']
 
     const interactionProps = enableHover
