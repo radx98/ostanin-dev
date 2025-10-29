@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'BoarDash',
     description: 'Enemy logic and behaviour for a one-week video game project',
-    link: 'https://ostaninth.substack.com/p/boardash',
+    link: 'https://boar-dash.vercel.app/',
     video: '/bd_cover.mp4',
     id: 'project2',
   },
@@ -73,6 +73,13 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    title: 'Branching Trail thread',
+    description:
+      'Idea and implementation',
+    link: 'https://x.com/ostaninth/status/1983294639349129660',
+    uid: 'blog-3',
+  },
   {
     title: 'BoarDash',
     description: 'We built a game. This is what we called it.',
