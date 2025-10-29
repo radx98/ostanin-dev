@@ -19,6 +19,7 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from './data'
+import Image from 'next/image'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -41,9 +42,11 @@ const TRANSITION_SECTION = {
 
 type ProjectVideoProps = {
   src: string
+  href: string
+  title: string
 }
 
-function ProjectVideo({ src }: ProjectVideoProps) {
+function ProjectVideo({ src, href, title }: ProjectVideoProps) {
   return (
     <MorphingDialog
       transition={{
@@ -53,6 +56,18 @@ function ProjectVideo({ src }: ProjectVideoProps) {
       }}
     >
       <MorphingDialogTrigger className="group relative aspect-video w-full cursor-zoom-in overflow-hidden rounded-xl">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(event) => {
+            event.stopPropagation()
+          }}
+          aria-label={`Open ${title}`}
+          className="absolute inset-0 z-10 block"
+        >
+          <span className="sr-only">{`Open ${title} project`}</span>
+        </a>
         <video
           src={src}
           autoPlay
@@ -60,7 +75,21 @@ function ProjectVideo({ src }: ProjectVideoProps) {
           muted
           className="block h-full w-full object-cover"
         />
-        <div className="pointer-events-none absolute inset-0 bg-black/10 opacity-100 transition-opacity duration-500 ease-out group-hover:opacity-0 dark:bg-white/10" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-black/15 opacity-100 transition-opacity duration-200 ease-out group-hover:opacity-0 dark:bg-black/25" aria-hidden="true" />
+        <button
+          type="button"
+          className="absolute right-[10px] top-[10px] z-20 flex h-[30px] w-[30px] items-center justify-center rounded-md bg-black/60 p-1 shadow-sm ring-1 ring-white/20 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-80 cursor-zoom-in"
+          aria-label={`Zoom ${title} video`}
+        >
+          <Image
+            src="/zoom.png"
+            alt=""
+            width={18}
+            height={18}
+            className="h-4 w-4 cursor-zoom-in"
+            aria-hidden="true"
+          />
+        </button>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative w-auto max-w-[min(90vw,64rem)] max-h-[90vh] rounded-2xl bg-zinc-50 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50 md:p-1">
@@ -156,12 +185,16 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">🛠️ Projects</h3>
+        <h3 className="mb-5 text-lg font-medium">🛠️&nbsp;&nbsp;&nbsp;Selected Projects</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
+                <ProjectVideo
+                  src={project.video}
+                  href={project.link}
+                  title={project.name}
+                />
               </div>
               <div className="px-1">
                 <a
@@ -174,6 +207,17 @@ export default function Personal() {
                 </a>
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
+                  {project.about ? (
+                    <a
+                      href={project.about}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-flex items-center rounded-full bg-zinc-100 border border-zinc-200/50 px-2 py-[1px] text-xs font-medium text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:border-zinc-700/20 dark:text-zinc-100 dark:hover:bg-zinc-700"
+                      aria-label={`Learn more about ${project.name}`}
+                    >
+                      about...
+                    </a>
+                  ) : null}
                 </p>
               </div>
             </div>
@@ -223,7 +267,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-3 text-lg font-medium">📝 Posts</h3>
+        <h3 className="mb-3 text-lg font-medium">✏️&nbsp;&nbsp;&nbsp;Posts</h3>
         <div className="flex flex-col space-y-0">
           <AnimatedBackground
             enableHover
@@ -261,7 +305,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">💬 Contact</h3>
+        <h3 className="mb-5 text-lg font-medium">💬&nbsp;&nbsp;&nbsp;Contact</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           {/* Feel free to contact me at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>

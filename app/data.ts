@@ -2,6 +2,7 @@ type Project = {
   name: string
   description: string
   link: string
+  about: string
   video: string
   id: string
 }
@@ -33,6 +34,7 @@ export const PROJECTS: Project[] = [
     description:
       'Graph-based brainstorming tool for exploring creative ideas',
     link: 'https://bt.ostanin.dev/',
+    about: 'https://x.com/ostaninth/status/1983294639349129660',
     video:  '/bt_cover.mp4',
     id: 'project1',
   },
@@ -40,37 +42,38 @@ export const PROJECTS: Project[] = [
     name: 'BoarDash',
     description: 'Enemy logic and behaviour for a one-week video game project',
     link: 'https://boar-dash.vercel.app/',
+    about: 'https://ostaninth.substack.com/p/boardash',
     video: '/bd_cover.mp4',
     id: 'project2',
   },
 ]
 
-export const WORK_EXPERIENCE: WorkExperience[] = [
-  {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work1',
-  },
-  {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
-    id: 'work2',
-  },
-  {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work3',
-  },
-]
+// export const WORK_EXPERIENCE: WorkExperience[] = [
+//   {
+//     company: 'Reglazed Studio',
+//     title: 'CEO',
+//     start: '2024',
+//     end: 'Present',
+//     link: 'https://ibelick.com',
+//     id: 'work1',
+//   },
+//   {
+//     company: 'Freelance',
+//     title: 'Design Engineer',
+//     start: '2022',
+//     end: '2024',
+//     link: 'https://ibelick.com',
+//     id: 'work2',
+//   },
+//   {
+//     company: 'Freelance',
+//     title: 'Front-end Developer',
+//     start: '2017',
+//     end: 'Present',
+//     link: 'https://ibelick.com',
+//     id: 'work3',
+//   },
+// ]
 
 export const BLOG_POSTS: BlogPost[] = [
   {
