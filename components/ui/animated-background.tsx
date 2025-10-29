@@ -9,11 +9,13 @@ import {
   useState,
   useId,
 } from 'react'
+import type { ReactNode } from 'react'
 
 type AnimatedBackgroundChild = ReactElement<{
   'data-id': string
   className?: string
   'data-checked'?: string
+  children?: ReactNode
   [key: string]: unknown
 }>
 
@@ -89,7 +91,7 @@ export function AnimatedBackground({
             />
           )}
         </AnimatePresence>
-        <div className="z-10">{child.props.children}</div>
+        <div className="z-10">{child.props.children as ReactNode}</div>
       </>,
     )
   })
