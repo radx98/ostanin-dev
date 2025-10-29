@@ -9,11 +9,18 @@ import {
   useState,
   useId,
 } from 'react'
+import type { ReactNode } from 'react'
+
+type AnimatedBackgroundChild = ReactElement<{
+  'data-id': string
+  className?: string
+  'data-checked'?: string
+  children?: ReactNode
+  [key: string]: unknown
+}>
 
 export type AnimatedBackgroundProps = {
-  children:
-    | ReactElement<{ 'data-id': string }>[]
-    | ReactElement<{ 'data-id': string }>
+  children: AnimatedBackgroundChild[] | AnimatedBackgroundChild
   defaultValue?: string
   onValueChange?: (newActiveId: string | null) => void
   className?: string
@@ -46,7 +53,9 @@ export function AnimatedBackground({
     }
   }, [defaultValue])
 
-  return Children.map(children, (child: any, index) => {
+  const childArray = Children.toArray(children) as AnimatedBackgroundChild[]
+
+  return childArray.map((child) => {
     const id = child.props['data-id']
 
     const interactionProps = enableHover
@@ -61,7 +70,6 @@ export function AnimatedBackground({
     return cloneElement(
       child,
       {
-        key: index,
         className: cn('relative inline-flex', child.props.className),
         'data-checked': activeId === id ? 'true' : 'false',
         ...interactionProps,
@@ -83,7 +91,7 @@ export function AnimatedBackground({
             />
           )}
         </AnimatePresence>
-        <div className="z-10">{child.props.children}</div>
+        <div className="z-10">{child.props.children as ReactNode}</div>
       </>,
     )
   })
