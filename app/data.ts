@@ -3,7 +3,7 @@ type Project = {
   description: string
   link: string
   about: string
-  video: string
+  screenshots: string
   id: string
 }
 
@@ -20,23 +20,32 @@ type SocialLink = {
 }
 
 export const PROJECTS: Project[] = [
-  {
-    name: 'Branching Trail',
+    {
+    name: 'Birdseye',
     description:
-      'Graph-based brainstorming tool for exploring creative ideas',
-    link: 'https://bt.ostanin.dev/',
-    about: 'https://x.com/ostaninth/status/1983294639349129660',
-    video:  '/bt_cover.mp4',
-    id: 'project1',
+      "A tool for exploring semantic clusters of user's tweet history (demo data, real product soon)",
+    link: 'https://birdseye.ostanin.dev/',
+    about: '',
+    screenshots: '/projects_media/birdseye',
+    id: 'project3',
   },
-  {
+    {
     name: 'BoarDash',
     description: 'Enemy logic and behaviour for a one-week video game project',
     link: 'https://boar-dash.vercel.app/',
     about: 'https://ostaninth.substack.com/p/boardash',
-    video: '/bd_cover.mp4',
-    id: 'project2',
+    screenshots: '/projects_media/boardash',
+    id: 'project1',
   },
+  // {
+  //   name: 'Branching Trail',
+  //   description:
+  //     'Graph-based brainstorming tool for exploring creative ideas',
+  //   link: 'https://bt.ostanin.dev/',
+  //   about: 'https://x.com/ostaninth/status/1983294639349129660',
+  //   screenshots: '/projects_media/branching_trail',
+  //   id: 'project2',
+  // },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
