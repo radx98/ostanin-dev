@@ -75,7 +75,7 @@ export function ProjectSlideshow({ images, href, title, delay }: ProjectSlidesho
             key={images[currentIndex]}
             src={images[currentIndex]}
             alt={`${title} screenshot ${currentIndex + 1}`}
-            className="absolute inset-0 w-full h-full object-contain bg-zinc-900/5 dark:bg-zinc-50/5"
+            className="absolute inset-0 w-full h-full object-cover bg-zinc-900/5 dark:bg-zinc-50/5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

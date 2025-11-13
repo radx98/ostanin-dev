@@ -29,16 +29,7 @@ export const PROJECTS: Project[] = [
     screenshots: '/projects_media/birdseye',
     id: 'project3',
   },
-  {
-    name: 'Branching Trail',
-    description:
-      'Graph-based brainstorming tool for exploring creative ideas',
-    link: 'https://bt.ostanin.dev/',
-    about: 'https://x.com/ostaninth/status/1983294639349129660',
-    screenshots: '/projects_media/branching_trail',
-    id: 'project2',
-  },
-  {
+    {
     name: 'BoarDash',
     description: 'Enemy logic and behaviour for a one-week video game project',
     link: 'https://boar-dash.vercel.app/',
@@ -46,6 +37,15 @@ export const PROJECTS: Project[] = [
     screenshots: '/projects_media/boardash',
     id: 'project1',
   },
+  // {
+  //   name: 'Branching Trail',
+  //   description:
+  //     'Graph-based brainstorming tool for exploring creative ideas',
+  //   link: 'https://bt.ostanin.dev/',
+  //   about: 'https://x.com/ostaninth/status/1983294639349129660',
+  //   screenshots: '/projects_media/branching_trail',
+  //   id: 'project2',
+  // },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
